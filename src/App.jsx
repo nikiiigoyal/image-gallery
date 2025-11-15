@@ -6,7 +6,7 @@ import { useRoute, useLocation } from 'wouter'
 import { easing } from 'maath'
 import getUuid from 'uuid-by-string'
 
-const GOLDENRATIO = 1.61803398875
+const GOLDENRATIO = 1.61803398874
 
 export const App = ({ images }) => (
   <Canvas dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
