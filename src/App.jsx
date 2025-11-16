@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import { useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { useCursor, MeshReflectorMaterial, Image, Text, Environment } from '@react-three/drei'
+import { useCursor, MeshReflectorMaterial, Image, Text, Environment, Html } from '@react-three/drei'
 import { useRoute, useLocation } from 'wouter'
 import { easing } from 'maath'
 import getUuid from 'uuid-by-string'
@@ -78,6 +78,16 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
     easing.damp3(image.current.scale, [0.80 * (!isActive && hovered ? 0.85 : 1), 0.9 * (!isActive && hovered ? 0.905 : 1), 1], 0.1, dt)
     easing.dampC(frame.current.material.color, hovered ? 'orange' : 'white', 0.1, dt)
   })
+const handleDownload = (e) => {
+    e.stopPropagation()
+    window.open(url, '_blank')
+  }
+  
+  const handleShare = (e) => {
+    e.stopPropagation()
+    alert(`Sharing: ${name}`)
+  }
+
   return (
     <group {...props}>
       <mesh
@@ -94,9 +104,100 @@ function Frame({ url, c = new THREE.Color(), ...props }) {
         </mesh>
         <Image raycast={() => null} ref={image} position={[0, 0, 0.7]} url={url} />
       </mesh>
-      <Text maxWidth={0.1} anchorX="left" anchorY="top" position={[0.55, GOLDENRATIO, 0]} fontSize={0.025}>
-        {name.split('-').join(' ')}
+
+      <Text maxWidth={0.1} 
+      anchorX="left" 
+      anchorY="top" 
+      position={[0.55, GOLDENRATIO, 0]} 
+      fontSize={0.025} 
+      color={hovered ? 'orange' : isActive ? '#00fff00' : 'white'}
+      >
+         {isActive ? '★ ' : hovered ? '→ ' : ''}{name.split('-').join(' ')}
       </Text>
+
+      {/* hover description */}
+      {hovered && !isActive && (
+        <Text maxWidth={0.8}
+          anchorX="left"
+          anchorY="top"
+          position={[0.55, GOLDENRATIO - 0.1, 0]}
+          fontSize={0.02}
+          color="#aaaaaa">
+          Click to view details
+          </Text>
+      )}
+    {/* Active state buttons using HTML */}
+      {isActive && (
+        <Html
+          position={[0, -0.3, 0]}
+          center
+          distanceFactor={1.5}
+          style={{
+            pointerEvents: 'auto',
+          }}>
+          <div style={{
+            display: 'flex',
+            gap: '10px',
+            background: 'rgba(0, 0, 0, 0.8)',
+            padding: '10px 20px',
+            borderRadius: '8px',
+            border: '1px solid rgba(255, 165, 0, 0.5)',
+          }}>
+            <button
+              onClick={handleDownload}
+              style={{
+                padding: '8px 16px',
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                border: 'none',
+                borderRadius: '4px',
+                color: 'white',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold',
+              }}>
+              View Full
+            </button>
+            <button
+              onClick={handleShare}
+              style={{
+                padding: '8px 16px',
+                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                border: 'none',
+                borderRadius: '4px',
+                color: 'white',
+                cursor: 'pointer',
+                fontSize: '14px',
+                fontWeight: 'bold',
+              }}>
+              Share
+            </button>
+          </div>
+        </Html>
+      )}
+      
+      {/* Hover state button using HTML */}
+      {hovered && !isActive && (
+        <Html
+          position={[0, -0.3, 0]}
+          center
+          distanceFactor={1.5}
+          style={{
+            pointerEvents: 'none',
+          }}>
+          <div style={{
+            padding: '6px 12px',
+            background: 'rgba(255, 165, 0, 0.2)',
+            borderRadius: '4px',
+            border: '1px solid rgba(255, 165, 0, 0.5)',
+            color: 'orange',
+            fontSize: '12px',
+            fontWeight: 'bold',
+          }}>
+            CLICK TO VIEW
+          </div>
+        </Html>
+      )}
+
     </group>
   )
 }
