@@ -137,7 +137,7 @@ const handleDownload = (e) => {
           }}>
           <div style={{
             display: 'flex',
-            gap: '10px',
+            gap: '8px',
             background: 'rgba(0, 0, 0, 0.8)',
             padding: '10px 20px',
             borderRadius: '8px',
