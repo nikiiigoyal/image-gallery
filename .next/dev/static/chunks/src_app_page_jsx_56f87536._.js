@@ -9,8 +9,8 @@
   "static/chunks/node_modules_@react-three_drei_ab8c4d23._.js",
   "static/chunks/node_modules_troika-three-text_dist_troika-three-text_esm_94005891.js",
   "static/chunks/node_modules_maath_dist_40cd8dad._.js",
-  "static/chunks/node_modules_aaa09b98._.js",
-  "static/chunks/src_app_page_cf51c7e1.js"
+  "static/chunks/node_modules_0b81177c._.js",
+  "static/chunks/src_Scene_jsx_f1d1e757._.js"
 ],
     source: "dynamic"
 });

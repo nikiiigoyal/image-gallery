@@ -11,12 +11,30 @@ const mod = __turbopack_context__.x("module", () => require("module"));
 
 module.exports = mod;
 }),
-"[project]/src/app/page.js [app-ssr] (ecmascript)", ((__turbopack_context__) => {
+"[externals]/next/dist/server/app-render/action-async-storage.external.js [external] (next/dist/server/app-render/action-async-storage.external.js, cjs)", ((__turbopack_context__, module, exports) => {
+
+const mod = __turbopack_context__.x("next/dist/server/app-render/action-async-storage.external.js", () => require("next/dist/server/app-render/action-async-storage.external.js"));
+
+module.exports = mod;
+}),
+"[externals]/next/dist/server/app-render/work-unit-async-storage.external.js [external] (next/dist/server/app-render/work-unit-async-storage.external.js, cjs)", ((__turbopack_context__, module, exports) => {
+
+const mod = __turbopack_context__.x("next/dist/server/app-render/work-unit-async-storage.external.js", () => require("next/dist/server/app-render/work-unit-async-storage.external.js"));
+
+module.exports = mod;
+}),
+"[externals]/next/dist/server/app-render/work-async-storage.external.js [external] (next/dist/server/app-render/work-async-storage.external.js, cjs)", ((__turbopack_context__, module, exports) => {
+
+const mod = __turbopack_context__.x("next/dist/server/app-render/work-async-storage.external.js", () => require("next/dist/server/app-render/work-async-storage.external.js"));
+
+module.exports = mod;
+}),
+"[project]/src/Scene.jsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
 __turbopack_context__.s([
-    "App",
-    ()=>App
+    "Scene",
+    ()=>Scene
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/ssr/react-jsx-dev-runtime.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/three/build/three.core.js [app-ssr] (ecmascript)");
@@ -29,7 +47,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$t
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@react-three/drei/core/Text.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Environment$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@react-three/drei/core/Environment.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$web$2f$Html$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@react-three/drei/web/Html.js [app-ssr] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$wouter$2f$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/wouter/esm/index.js [app-ssr] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/navigation.js [app-ssr] (ecmascript)"); // Replaces useLocation
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$maath$2f$dist$2f$maath$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/node_modules/maath/dist/maath.esm.js [app-ssr] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$maath$2f$dist$2f$easing$2d$0f4db1c0$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__e__as__easing$3e$__ = __turbopack_context__.i("[project]/node_modules/maath/dist/easing-0f4db1c0.esm.js [app-ssr] (ecmascript) <export e as easing>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2d$by$2d$string$2f$src$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/uuid-by-string/src/index.js [app-ssr] (ecmascript)");
@@ -43,7 +61,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2d$by$2
 ;
 ;
 const GOLDENRATIO = 1.61803398874;
-const App = ({ images })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
+const Scene = ({ images, activeId = null })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
         dpr: [
             1,
             1.5
@@ -63,7 +81,7 @@ const App = ({ images })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$p
                     '#191920'
                 ]
             }, void 0, false, {
-                fileName: "[project]/src/app/page.js",
+                fileName: "[project]/src/Scene.jsx",
                 lineNumber: 15,
                 columnNumber: 5
             }, ("TURBOPACK compile-time value", void 0)),
@@ -75,7 +93,7 @@ const App = ({ images })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$p
                     15
                 ]
             }, void 0, false, {
-                fileName: "[project]/src/app/page.js",
+                fileName: "[project]/src/Scene.jsx",
                 lineNumber: 16,
                 columnNumber: 5
             }, ("TURBOPACK compile-time value", void 0)),
@@ -87,9 +105,10 @@ const App = ({ images })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$p
                 ],
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Frames, {
-                        images: images
+                        images: images,
+                        activeId: activeId
                     }, void 0, false, {
-                        fileName: "[project]/src/app/page.js",
+                        fileName: "[project]/src/Scene.jsx",
                         lineNumber: 18,
                         columnNumber: 7
                     }, ("TURBOPACK compile-time value", void 0)),
@@ -106,7 +125,7 @@ const App = ({ images })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$p
                                     50
                                 ]
                             }, void 0, false, {
-                                fileName: "[project]/src/app/page.js",
+                                fileName: "[project]/src/Scene.jsx",
                                 lineNumber: 20,
                                 columnNumber: 9
                             }, ("TURBOPACK compile-time value", void 0)),
@@ -125,42 +144,42 @@ const App = ({ images })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$p
                                 color: "#050505",
                                 metalness: 0.5
                             }, void 0, false, {
-                                fileName: "[project]/src/app/page.js",
+                                fileName: "[project]/src/Scene.jsx",
                                 lineNumber: 21,
                                 columnNumber: 9
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/src/app/page.js",
+                        fileName: "[project]/src/Scene.jsx",
                         lineNumber: 19,
                         columnNumber: 7
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
-                fileName: "[project]/src/app/page.js",
+                fileName: "[project]/src/Scene.jsx",
                 lineNumber: 17,
                 columnNumber: 5
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Environment$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Environment"], {
                 preset: "city"
             }, void 0, false, {
-                fileName: "[project]/src/app/page.js",
+                fileName: "[project]/src/Scene.jsx",
                 lineNumber: 35,
                 columnNumber: 5
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true, {
-        fileName: "[project]/src/app/page.js",
+        fileName: "[project]/src/Scene.jsx",
         lineNumber: 14,
         columnNumber: 3
     }, ("TURBOPACK compile-time value", void 0));
-function Frames({ images, q = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Quaternion"](), p = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Vector3"]() }) {
+function Frames({ images, activeId, q = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Quaternion"](), p = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Vector3"]() }) {
     const ref = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])();
     const clicked = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])();
-    const [, params] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$wouter$2f$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRoute"])('/item/:id');
-    const [, setLocation] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$wouter$2f$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useLocation"])();
+    const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
-        clicked.current = ref.current.getObjectByName(params?.id);
+        // Find object by the activeId passed from Next.js Page params
+        clicked.current = ref.current.getObjectByName(activeId);
         if (clicked.current) {
             clicked.current.parent.updateWorldMatrix(true, true);
             clicked.current.parent.localToWorld(p.set(0, GOLDENRATIO / 2, 1.25));
@@ -176,29 +195,34 @@ function Frames({ images, q = new __TURBOPACK__imported__module__$5b$project$5d2
     });
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
         ref: ref,
-        onClick: (e)=>(e.stopPropagation(), setLocation(clicked.current === e.object ? '/' : '/item/' + e.object.name)),
-        onPointerMissed: ()=>setLocation('/'),
+        onClick: (e)=>{
+            e.stopPropagation();
+            // Navigate using Next.js router
+            const target = clicked.current === e.object ? '/' : '/item/' + e.object.name;
+            router.push(target);
+        },
+        onPointerMissed: ()=>router.push('/'),
         children: images.map((props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(Frame, {
-                ...props
+                ...props,
+                activeId: activeId
             }, props.url, false, {
-                fileName: "[project]/src/app/page.js",
-                lineNumber: 64,
+                fileName: "[project]/src/Scene.jsx",
+                lineNumber: 72,
                 columnNumber: 30
             }, this))
     }, void 0, false, {
-        fileName: "[project]/src/app/page.js",
-        lineNumber: 60,
+        fileName: "[project]/src/Scene.jsx",
+        lineNumber: 63,
         columnNumber: 5
     }, this);
 }
-function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Color"](), ...props }) {
+function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Color"](), activeId, ...props }) {
     const image = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])();
     const frame = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])();
-    const [, params] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$wouter$2f$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRoute"])('/item/:id');
     const [hovered, hover] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
     const [rnd] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(()=>Math.random());
     const name = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2d$by$2d$string$2f$src$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"])(url);
-    const isActive = params?.id === name;
+    const isActive = activeId === name;
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$web$2f$useCursor$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useCursor"])(hovered);
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$events$2d$f8cd670d$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__D__as__useFrame$3e$__["useFrame"])((state, dt)=>{
         image.current.material.zoom = 1.2 + Math.sin(rnd * 10000 + state.clock.elapsedTime / 3) / 4;
@@ -236,8 +260,8 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                 ],
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("boxGeometry", {}, void 0, false, {
-                        fileName: "[project]/src/app/page.js",
-                        lineNumber: 101,
+                        fileName: "[project]/src/Scene.jsx",
+                        lineNumber: 110,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("meshStandardMaterial", {
@@ -246,8 +270,8 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                         roughness: 0.5,
                         envMapIntensity: 2
                     }, void 0, false, {
-                        fileName: "[project]/src/app/page.js",
-                        lineNumber: 102,
+                        fileName: "[project]/src/Scene.jsx",
+                        lineNumber: 111,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -265,22 +289,22 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                         ],
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("boxGeometry", {}, void 0, false, {
-                                fileName: "[project]/src/app/page.js",
-                                lineNumber: 104,
+                                fileName: "[project]/src/Scene.jsx",
+                                lineNumber: 113,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("meshBasicMaterial", {
                                 toneMapped: false,
                                 fog: false
                             }, void 0, false, {
-                                fileName: "[project]/src/app/page.js",
-                                lineNumber: 105,
+                                fileName: "[project]/src/Scene.jsx",
+                                lineNumber: 114,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
-                        fileName: "[project]/src/app/page.js",
-                        lineNumber: 103,
+                        fileName: "[project]/src/Scene.jsx",
+                        lineNumber: 112,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Image$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Image"], {
@@ -293,14 +317,14 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                         ],
                         url: url
                     }, void 0, false, {
-                        fileName: "[project]/src/app/page.js",
-                        lineNumber: 107,
+                        fileName: "[project]/src/Scene.jsx",
+                        lineNumber: 116,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "[project]/src/app/page.js",
-                lineNumber: 95,
+                fileName: "[project]/src/Scene.jsx",
+                lineNumber: 104,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Text"], {
@@ -319,8 +343,8 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                     name.split('-').join(' ')
                 ]
             }, void 0, true, {
-                fileName: "[project]/src/app/page.js",
-                lineNumber: 110,
+                fileName: "[project]/src/Scene.jsx",
+                lineNumber: 119,
                 columnNumber: 7
             }, this),
             hovered && !isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Text"], {
@@ -336,8 +360,8 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                 color: "#aaaaaa",
                 children: "Click to view details"
             }, void 0, false, {
-                fileName: "[project]/src/app/page.js",
-                lineNumber: 122,
+                fileName: "[project]/src/Scene.jsx",
+                lineNumber: 131,
                 columnNumber: 9
             }, this),
             isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$web$2f$Html$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Html"], {
@@ -352,60 +376,35 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                     pointerEvents: 'auto'
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    style: {
-                        display: 'flex',
-                        gap: '8px',
-                        background: 'rgba(0, 0, 0, 0.8)',
-                        padding: '10px 20px',
-                        borderRadius: '8px',
-                        border: '1px solid rgba(255, 165, 0, 0.5)'
-                    },
+                    className: "flex gap-2 bg-black/80 p-4 rounded-lg border border-orange-500/50",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: handleDownload,
-                            style: {
-                                padding: '8px 16px',
-                                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-                                border: 'none',
-                                borderRadius: '4px',
-                                color: 'white',
-                                cursor: 'pointer',
-                                fontSize: '14px',
-                                fontWeight: 'bold'
-                            },
+                            className: "px-4 py-2 bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded text-white text-sm font-bold cursor-pointer border-none",
                             children: "View Full"
                         }, void 0, false, {
-                            fileName: "[project]/src/app/page.js",
+                            fileName: "[project]/src/Scene.jsx",
                             lineNumber: 148,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: handleShare,
-                            style: {
-                                padding: '8px 16px',
-                                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-                                border: 'none',
-                                borderRadius: '4px',
-                                color: 'white',
-                                cursor: 'pointer',
-                                fontSize: '14px',
-                                fontWeight: 'bold'
-                            },
+                            className: "px-4 py-2 bg-gradient-to-br from-[#f093fb] to-[#f5576c] rounded text-white text-sm font-bold cursor-pointer border-none",
                             children: "Share"
                         }, void 0, false, {
-                            fileName: "[project]/src/app/page.js",
-                            lineNumber: 162,
+                            fileName: "[project]/src/Scene.jsx",
+                            lineNumber: 153,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
-                    fileName: "[project]/src/app/page.js",
-                    lineNumber: 140,
+                    fileName: "[project]/src/Scene.jsx",
+                    lineNumber: 147,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
-                fileName: "[project]/src/app/page.js",
-                lineNumber: 133,
+                fileName: "[project]/src/Scene.jsx",
+                lineNumber: 142,
                 columnNumber: 9
             }, this),
             hovered && !isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$web$2f$Html$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Html"], {
@@ -420,34 +419,26 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                     pointerEvents: 'none'
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    style: {
-                        padding: '6px 12px',
-                        background: 'rgba(255, 165, 0, 0.2)',
-                        borderRadius: '4px',
-                        border: '1px solid rgba(255, 165, 0, 0.5)',
-                        color: 'orange',
-                        fontSize: '12px',
-                        fontWeight: 'bold'
-                    },
+                    className: "px-3 py-1.5 bg-[rgba(255,165,0,0.2)] rounded border border-orange-500/50 text-orange-500 text-xs font-bold",
                     children: "CLICK TO VIEW"
                 }, void 0, false, {
-                    fileName: "[project]/src/app/page.js",
-                    lineNumber: 189,
+                    fileName: "[project]/src/Scene.jsx",
+                    lineNumber: 168,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
-                fileName: "[project]/src/app/page.js",
-                lineNumber: 182,
+                fileName: "[project]/src/Scene.jsx",
+                lineNumber: 163,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
-        fileName: "[project]/src/app/page.js",
-        lineNumber: 94,
+        fileName: "[project]/src/Scene.jsx",
+        lineNumber: 103,
         columnNumber: 5
     }, this);
 }
 }),
 ];
 
-//# sourceMappingURL=%5Broot-of-the-server%5D__88f988c5._.js.map
+//# sourceMappingURL=%5Broot-of-the-server%5D__1510dca4._.js.map

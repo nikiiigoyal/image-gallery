@@ -1,16 +1,14 @@
-// Import your Tailwind CSS here
+import'./globals.css';
 
 export const metadata = {
   title: 'Image Gallery',
-  description: '3D Image Gallery built with R3F',
+  description: '3D Image Gallery with Next.js',
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <div id="root">{children}</div>
-      </body>
+      <body>{children}</body>
     </html>
   )
 }

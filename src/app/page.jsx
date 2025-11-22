@@ -1,8 +1,4 @@
-import { createRoot } from 'react-dom/client'
-import './App.css'
-import { App } from './Scene'
-
-
+import { Scene } from "../Scene"
 const images = [
   // Front
   { position: [0, 0, 1.5], rotation: [0, 0, 0], url: '/bayc1.avif' },
@@ -18,5 +14,11 @@ const images = [
   { position: [2.15, 0, 1.5], rotation: [0, -Math.PI / 2.5, 0], url: '/bayc8.avif' },
   { position: [2, 0, 2.75], rotation: [0, -Math.PI / 2.5, 0], url: '/bayc9.avif' }
 ]
-
-createRoot(document.getElementById('root')).render(<App images={images} />)
+export default function Page() {
+  return (
+    <div className="w-full h-full">
+      <Scene images={images} />
+    </div>
+  )
+}
+// createRoot(document.getElementById('root')).render(<App images={images} />)
