@@ -126,7 +126,7 @@ function Frame({ url, c = new THREE.Color(), activeId, ...props }) {
          {isActive ? '★ ' : hovered ? '→ ' : ''}{name.split('-').join(' ')}
       </Text>
 
-      {/* hover description */}
+      
       {hovered && !isActive && (
         <Text maxWidth={0.8}
           anchorX="left"
