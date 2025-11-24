@@ -10,7 +10,7 @@ import getUuid from 'uuid-by-string'
 
 const GOLDENRATIO = 1.61803398874
 
-export const Scene = ({ images, activeId = null }) => (
+export const Scene = ({ images, activeId = null , basePath = '/gallery' }) => (
   <Canvas dpr={[1, 1.5]} camera={{ fov: 70, position: [0, 2, 15] }}>
     <color attach="background" args={['#191920']} />
     <fog attach="fog" args={['#191920', 0, 15]} />
@@ -36,7 +36,7 @@ export const Scene = ({ images, activeId = null }) => (
   </Canvas>
 )
 
-function Frames({ images, activeId, q = new THREE.Quaternion(), p = new THREE.Vector3() }) {
+function Frames({ images, activeId, basePath, q = new THREE.Quaternion(), p = new THREE.Vector3() }) {
   const ref = useRef()
   const clicked = useRef()
   const router = useRouter()
@@ -65,7 +65,7 @@ function Frames({ images, activeId, q = new THREE.Quaternion(), p = new THREE.Ve
       onClick={(e) => {
         e.stopPropagation()
         // Navigate using Next.js router
-        const target = clicked.current === e.object ? '/' : '/item/' + e.object.name
+        const target = clicked.current === e.object ? basePath : '/item/' + e.object.name
         router.push(target)
       }}
       onPointerMissed={() => router.push('/')}>
@@ -147,12 +147,12 @@ function Frame({ url, c = new THREE.Color(), activeId, ...props }) {
           <div className="flex gap-2 bg-black/80 p-4 rounded-lg border border-orange-500/50">
             <button
               onClick={handleDownload}
-              className="px-4 py-2 bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded text-white text-sm font-bold cursor-pointer border-none">
+              className="px-4 py-2 rounded text-white text-sm font-bold cursor-pointer border-none">
               View Full
             </button>
             <button
               onClick={handleShare}
-              className="px-4 py-2 bg-gradient-to-br from-[#f093fb] to-[#f5576c] rounded text-white text-sm font-bold cursor-pointer border-none">
+              className="px-4 py-2 rounded text-white text-sm font-bold cursor-pointer border-none">
               Share
             </button>
           </div>

@@ -61,7 +61,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2d$by$2
 ;
 ;
 const GOLDENRATIO = 1.61803398874;
-const Scene = ({ images, activeId = null })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
+const Scene = ({ images, activeId = null, basePath = '/gallery' })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
         dpr: [
             1,
             1.5
@@ -173,7 +173,7 @@ const Scene = ({ images, activeId = null })=>/*#__PURE__*/ (0, __TURBOPACK__impo
         lineNumber: 14,
         columnNumber: 3
     }, ("TURBOPACK compile-time value", void 0));
-function Frames({ images, activeId, q = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Quaternion"](), p = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Vector3"]() }) {
+function Frames({ images, activeId, basePath, q = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Quaternion"](), p = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Vector3"]() }) {
     const ref = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])();
     const clicked = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRef"])();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -198,7 +198,7 @@ function Frames({ images, activeId, q = new __TURBOPACK__imported__module__$5b$p
         onClick: (e)=>{
             e.stopPropagation();
             // Navigate using Next.js router
-            const target = clicked.current === e.object ? '/' : '/item/' + e.object.name;
+            const target = clicked.current === e.object ? basePath : '/item/' + e.object.name;
             router.push(target);
         },
         onPointerMissed: ()=>router.push('/'),
@@ -380,7 +380,7 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: handleDownload,
-                            className: "px-4 py-2 bg-gradient-to-br from-[#667eea] to-[#764ba2] rounded text-white text-sm font-bold cursor-pointer border-none",
+                            className: "px-4 py-2 rounded text-white text-sm font-bold cursor-pointer border-none",
                             children: "View Full"
                         }, void 0, false, {
                             fileName: "[project]/src/Scene.jsx",
@@ -389,7 +389,7 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: handleShare,
-                            className: "px-4 py-2 bg-gradient-to-br from-[#f093fb] to-[#f5576c] rounded text-white text-sm font-bold cursor-pointer border-none",
+                            className: "px-4 py-2 rounded text-white text-sm font-bold cursor-pointer border-none",
                             children: "Share"
                         }, void 0, false, {
                             fileName: "[project]/src/Scene.jsx",
