@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "eb8fbd5fab2a130373631397353c2c6e",
-    "previewModeSigningKey": "9f35740c5b753a363ce7dfad8753c24d82eb40c1e2cb2e28595e469021bfc603",
-    "previewModeEncryptionKey": "9df2a405d2b1432a47c5b499e55402d0795220a260b1db74c1574725fd151674"
-  }
-}
+{"version":4,"routes":{"/item/dc8529de-c284-59fd-8662-b9b866a0b53c":{},"/item/ad6c4279-bc9f-58a0-be80-37d42a80d25d":{},"/item/95f7af87-6546-5cb5-a6a5-b219d9daf84a":{},"/item/f5dbf8b0-c4e0-5113-aae3-2a6405cae952":{},"/item/1d0325d6-22b2-511f-94ae-eef149101acb":{},"/item/bbe8fe08-b906-5f2f-8f0b-72924f16cd00":{},"/item/5a9339c9-b91d-5a3e-b1c2-6fed3cf091ee":{},"/item/211e8729-e2c0-5dbb-a4f6-36a3172d6651":{},"/item/9f9ce2ce-d3a0-5e9d-8949-51b1fe98b473":{}},"dynamicRoutes":{"/item/[id]":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/item/[id]","routeRegex":"^\\/item\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"505d4b494d0248fa90f3d045cd872a83","previewModeSigningKey":"f2ea36a8e148c04a4599072f0226a1a27bec2c8e415a4e7cd929b8d4a60a728a","previewModeEncryptionKey":"7c6ca1d3b631aabfb813e1151b9b14e7d49f828446a6df3cd4c35d6b3c800ffa"}}

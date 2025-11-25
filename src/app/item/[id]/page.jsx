@@ -1,29 +1,21 @@
 import { Scene } from '../../../Scene'
 import Link from 'next/link'
+import getUuid from 'uuid-by-string' // Import this to generate matching IDs
 
-// We need the same images array here so the 3D scene knows what to render
-const images = [
-  { position: [0, 0, 1.5], rotation: [0, 0, 0], url: '/bayc1.avif' },
-  // Back
-  { position: [-0.8, 0, -0.6], rotation: [0, 0, 0], url: '/bayc2.avif' },
-  { position: [0.8, 0, -0.6], rotation: [0, 0, 0], url: '/bayc3.avif' },
-  // Left
-  { position: [-1.75, 0, 0.25], rotation: [0, Math.PI / 2.5, 0], url: '/bayc4.avif' },
-  { position: [-2.15, 0, 1.5], rotation: [0, Math.PI / 2.5, 0], url: '/bayc5.png' },
-  { position: [-2, 0, 2.75], rotation: [0, Math.PI / 2.5, 0], url: '/bayc6.avif' },
-  // Right
-  { position: [1.75, 0, 0.25], rotation: [0, -Math.PI / 2.5, 0], url: '/bayc7.avif' },
-  { position: [2.15, 0, 1.5], rotation: [0, -Math.PI / 2.5, 0], url: '/bayc8.avif' },
-  { position: [2, 0, 2.75], rotation: [0, -Math.PI / 2.5, 0], url: '/bayc9.avif' }
-]
+// 1. Import your data so generateStaticParams can read it
+// Ensure this path points to your actual data.json file
+import images from '../../../data.json' 
 
-// Required for static exports, safe to return empty array for dynamic dev mode
 export async function generateStaticParams() {
-  return [] 
+  // 2. Map over your images to generate a route for EVERY item
+  // This tells Next.js: "Build a page for /item/uuid-1, /item/uuid-2, etc."
+  return images.map((img) => ({
+    id: getUuid(img.url),
+  }))
 }
 
 export default async function ItemPage({ params }) {
-  // In Next.js 15, params is a promise you must await
+  // In Next.js 15+, params is a promise
   const { id } = await params 
   
   return (
@@ -37,7 +29,7 @@ export default async function ItemPage({ params }) {
           ← Back to Gallery
         </Link>
       </div>
-      {/* We pass basePath="/gallery" so clicking "back" goes to gallery, not home */}
+      {/* 3. Pass the imported images to the Scene */}
       <Scene images={images} activeId={id} basePath="/gallery" />
     </div>
   )

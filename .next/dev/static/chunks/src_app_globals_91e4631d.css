@@ -435,10 +435,6 @@
     top: calc(var(--spacing) * -1);
   }
 
-  .top-0 {
-    top: calc(var(--spacing) * 0);
-  }
-
   .top-4 {
     top: calc(var(--spacing) * 4);
   }
@@ -461,10 +457,6 @@
 
   .bottom-1 {
     bottom: calc(var(--spacing) * 1);
-  }
-
-  .left-0 {
-    left: calc(var(--spacing) * 0);
   }
 
   .left-4 {
