@@ -32,18 +32,34 @@ var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.sign
 ;
 ;
 const GOLDENRATIO = 1.61803398874;
-const ITEMS_PER_PAGE = 9 // Number of frames to show per page
-;
+const ITEMS_PER_PAGE = 9;
 const Scene = ({ images, activeId = null, basePath = '/gallery' })=>{
     _s();
     const [page, setPage] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
-    const [selectedItem, setSelectedItem] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null) // For the Modal
-    ;
-    // Pagination logic
+    const [selectedItem, setSelectedItem] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(null);
+    // IMPORTANT: Using a functional update correctly ensures we don't lose previous state
+    const [favorites, setFavorites] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(new Set());
+    const [showFavSidebar, setShowFavSidebar] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const totalPages = Math.ceil(images.length / ITEMS_PER_PAGE);
     const visibleImages = images.slice(page * ITEMS_PER_PAGE, (page + 1) * ITEMS_PER_PAGE);
-    const nextPage = ()=>setPage((p)=>(p + 1) % totalPages);
-    const prevPage = ()=>setPage((p)=>(p - 1 + totalPages) % totalPages);
+    // Fixed Toggle Logic
+    const toggleFavorite = (id)=>{
+        setFavorites((prev)=>{
+            const newFavs = new Set(prev) // Create a copy
+            ;
+            if (newFavs.has(id)) {
+                newFavs.delete(id); // Remove if exists
+            } else {
+                newFavs.add(id); // Add if new
+            }
+            return newFavs // Return new Set reference
+            ;
+        });
+    };
+    const handleColorClick = (color)=>{
+        navigator.clipboard.writeText(color);
+        alert(`Color ${color} copied to clipboard!`);
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$react$2d$three$2d$fiber$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["Canvas"], {
@@ -67,7 +83,7 @@ const Scene = ({ images, activeId = null, basePath = '/gallery' })=>{
                         ]
                     }, void 0, false, {
                         fileName: "[project]/src/Scene.jsx",
-                        lineNumber: 29,
+                        lineNumber: 46,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("fog", {
@@ -79,7 +95,7 @@ const Scene = ({ images, activeId = null, basePath = '/gallery' })=>{
                         ]
                     }, void 0, false, {
                         fileName: "[project]/src/Scene.jsx",
-                        lineNumber: 30,
+                        lineNumber: 47,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
@@ -93,10 +109,12 @@ const Scene = ({ images, activeId = null, basePath = '/gallery' })=>{
                                 images: visibleImages,
                                 activeId: activeId,
                                 basePath: basePath,
-                                onOpenDetails: setSelectedItem
+                                onOpenDetails: setSelectedItem,
+                                favorites: favorites,
+                                onToggleFavorite: toggleFavorite
                             }, void 0, false, {
                                 fileName: "[project]/src/Scene.jsx",
-                                lineNumber: 32,
+                                lineNumber: 49,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -113,7 +131,7 @@ const Scene = ({ images, activeId = null, basePath = '/gallery' })=>{
                                         ]
                                     }, void 0, false, {
                                         fileName: "[project]/src/Scene.jsx",
-                                        lineNumber: 39,
+                                        lineNumber: 58,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$MeshReflectorMaterial$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MeshReflectorMaterial"], {
@@ -132,325 +150,459 @@ const Scene = ({ images, activeId = null, basePath = '/gallery' })=>{
                                         metalness: 0.5
                                     }, void 0, false, {
                                         fileName: "[project]/src/Scene.jsx",
-                                        lineNumber: 40,
+                                        lineNumber: 59,
                                         columnNumber: 13
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/Scene.jsx",
-                                lineNumber: 38,
+                                lineNumber: 57,
                                 columnNumber: 11
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/Scene.jsx",
-                        lineNumber: 31,
+                        lineNumber: 48,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Environment$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Environment"], {
                         preset: "city"
                     }, void 0, false, {
                         fileName: "[project]/src/Scene.jsx",
-                        lineNumber: 54,
+                        lineNumber: 73,
                         columnNumber: 9
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/Scene.jsx",
-                lineNumber: 28,
+                lineNumber: 45,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0)),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute top-0 left-0 w-full h-full pointer-events-none flex flex-col justify-between p-8",
+                className: "absolute inset-0 pointer-events-none",
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "pointer-events-auto flex justify-center gap-6 w-full absolute bottom-10 left-0 z-10",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: prevPage,
-                                className: "bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-6 py-2 rounded-full border border-white/20 transition-all",
-                                children: "← Previous"
-                            }, void 0, false, {
-                                fileName: "[project]/src/Scene.jsx",
-                                lineNumber: 62,
-                                columnNumber: 11
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: "flex items-center text-white/50 font-mono text-sm",
-                                children: [
-                                    "Page ",
-                                    page + 1,
-                                    " / ",
-                                    totalPages
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/Scene.jsx",
-                                lineNumber: 68,
-                                columnNumber: 11
-                            }, ("TURBOPACK compile-time value", void 0)),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                onClick: nextPage,
-                                className: "bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-6 py-2 rounded-full border border-white/20 transition-all",
-                                children: "Next →"
-                            }, void 0, false, {
-                                fileName: "[project]/src/Scene.jsx",
-                                lineNumber: 71,
-                                columnNumber: 11
-                            }, ("TURBOPACK compile-time value", void 0))
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/Scene.jsx",
-                        lineNumber: 61,
-                        columnNumber: 9
-                    }, ("TURBOPACK compile-time value", void 0)),
-                    selectedItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm pointer-events-auto",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "bg-[#191920] border border-white/10 p-8 rounded-2xl max-w-4xl w-full flex gap-8 shadow-2xl relative",
+                        className: "absolute top-8 right-8 pointer-events-auto z-20",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            onClick: ()=>setShowFavSidebar(true),
+                            className: "relative group bg-white/10 hover:bg-white/20 backdrop-blur-md p-3 rounded-full border border-white/20 transition-all",
                             children: [
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                    onClick: ()=>setSelectedItem(null),
-                                    className: "absolute top-4 right-4 text-white/50 hover:text-white w-8 h-8 flex items-center justify-center rounded-full bg-white/5",
-                                    children: "✕"
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    viewBox: "0 0 24 24",
+                                    fill: favorites.size > 0 ? "red" : "none",
+                                    stroke: "white",
+                                    strokeWidth: "2",
+                                    className: "w-6 h-6 transition-colors",
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                                        strokeLinecap: "round",
+                                        strokeLinejoin: "round",
+                                        d: "M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/Scene.jsx",
+                                        lineNumber: 85,
+                                        columnNumber: 15
+                                    }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/Scene.jsx",
-                                    lineNumber: 83,
+                                    lineNumber: 84,
+                                    columnNumber: 13
+                                }, ("TURBOPACK compile-time value", void 0)),
+                                favorites.size > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "absolute -top-1 -right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full",
+                                    children: favorites.size
+                                }, void 0, false, {
+                                    fileName: "[project]/src/Scene.jsx",
+                                    lineNumber: 88,
+                                    columnNumber: 15
+                                }, ("TURBOPACK compile-time value", void 0))
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/Scene.jsx",
+                            lineNumber: 80,
+                            columnNumber: 11
+                        }, ("TURBOPACK compile-time value", void 0))
+                    }, void 0, false, {
+                        fileName: "[project]/src/Scene.jsx",
+                        lineNumber: 79,
+                        columnNumber: 9
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute right-8 bottom-1 -translate-y-1/2 flex flex-col gap-4 pointer-events-auto z-10",
+                        children: Array.from({
+                            length: totalPages
+                        }).map((_, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                onClick: ()=>setPage(index),
+                                className: `w-10 h-10 rounded-full border flex items-center justify-center text-sm font-bold transition-all duration-300 ${page === index ? 'bg-white text-black border-white scale-110 shadow-[0_0_15px_rgba(255,255,255,0.5)]' : 'bg-black/40 text-white/50 border-white/20 hover:bg-white/20 hover:text-white'}`,
+                                children: index + 1
+                            }, index, false, {
+                                fileName: "[project]/src/Scene.jsx",
+                                lineNumber: 98,
+                                columnNumber: 13
+                            }, ("TURBOPACK compile-time value", void 0)))
+                    }, void 0, false, {
+                        fileName: "[project]/src/Scene.jsx",
+                        lineNumber: 96,
+                        columnNumber: 9
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    showFavSidebar && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute inset-0 bg-black/50 backdrop-blur-sm z-50 pointer-events-auto flex justify-end",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "w-96 h-full bg-[#191920] border-l border-white/10 p-6 shadow-2xl flex flex-col overflow-hidden animate-in slide-in-from-right duration-300",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex justify-between items-center mb-8",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                                            className: "text-2xl font-bold text-white",
+                                            children: "Your Favorites"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/Scene.jsx",
+                                            lineNumber: 117,
+                                            columnNumber: 17
+                                        }, ("TURBOPACK compile-time value", void 0)),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                            onClick: ()=>setShowFavSidebar(false),
+                                            className: "w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10 text-white/50 hover:text-white",
+                                            children: "✕"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/Scene.jsx",
+                                            lineNumber: 118,
+                                            columnNumber: 17
+                                        }, ("TURBOPACK compile-time value", void 0))
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/Scene.jsx",
+                                    lineNumber: 116,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-1/2 rounded-xl overflow-hidden bg-black h-96 relative",
+                                    className: "flex-1 overflow-y-auto pr-2 space-y-4",
+                                    children: favorites.size === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "text-white/30 text-center mt-20",
+                                        children: "No favorites yet."
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/Scene.jsx",
+                                        lineNumber: 126,
+                                        columnNumber: 19
+                                    }, ("TURBOPACK compile-time value", void 0)) : // We need to look through ALL images, not just visible ones
+                                    images.filter((img)=>favorites.has((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2d$by$2d$string$2f$src$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(img.url))).map((img)=>{
+                                        const id = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2d$by$2d$string$2f$src$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(img.url);
+                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex gap-4 items-center bg-white/5 p-3 rounded-xl border border-white/5",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                                    src: img.url,
+                                                    className: "w-16 h-16 object-cover rounded-lg",
+                                                    alt: ""
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/Scene.jsx",
+                                                    lineNumber: 133,
+                                                    columnNumber: 25
+                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "flex-1",
+                                                    children: [
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "text-white font-medium text-sm truncate",
+                                                            children: [
+                                                                "NFT #",
+                                                                id.slice(0, 6)
+                                                            ]
+                                                        }, void 0, true, {
+                                                            fileName: "[project]/src/Scene.jsx",
+                                                            lineNumber: 135,
+                                                            columnNumber: 27
+                                                        }, ("TURBOPACK compile-time value", void 0)),
+                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                            onClick: ()=>toggleFavorite(id),
+                                                            className: "text-xs text-red-400 hover:text-red-300 mt-1",
+                                                            children: "Remove"
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/src/Scene.jsx",
+                                                            lineNumber: 136,
+                                                            columnNumber: 27
+                                                        }, ("TURBOPACK compile-time value", void 0))
+                                                    ]
+                                                }, void 0, true, {
+                                                    fileName: "[project]/src/Scene.jsx",
+                                                    lineNumber: 134,
+                                                    columnNumber: 25
+                                                }, ("TURBOPACK compile-time value", void 0))
+                                            ]
+                                        }, id, true, {
+                                            fileName: "[project]/src/Scene.jsx",
+                                            lineNumber: 132,
+                                            columnNumber: 23
+                                        }, ("TURBOPACK compile-time value", void 0));
+                                    })
+                                }, void 0, false, {
+                                    fileName: "[project]/src/Scene.jsx",
+                                    lineNumber: 124,
+                                    columnNumber: 15
+                                }, ("TURBOPACK compile-time value", void 0))
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/Scene.jsx",
+                            lineNumber: 115,
+                            columnNumber: 13
+                        }, ("TURBOPACK compile-time value", void 0))
+                    }, void 0, false, {
+                        fileName: "[project]/src/Scene.jsx",
+                        lineNumber: 114,
+                        columnNumber: 11
+                    }, ("TURBOPACK compile-time value", void 0)),
+                    selectedItem && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-md pointer-events-auto p-4",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "bg-[#191920] border border-white/10 p-8 rounded-3xl max-w-5xl w-full flex flex-col md:flex-row gap-8 shadow-2xl relative animate-in fade-in zoom-in duration-300",
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    onClick: ()=>setSelectedItem(null),
+                                    className: "absolute top-4 right-4 text-white/50 hover:text-white w-10 h-10 flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition-colors",
+                                    children: "✕"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/Scene.jsx",
+                                    lineNumber: 156,
+                                    columnNumber: 15
+                                }, ("TURBOPACK compile-time value", void 0)),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "w-full md:w-1/2 rounded-2xl overflow-hidden bg-black aspect-square md:aspect-auto relative shadow-lg group",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                         src: selectedItem.url,
                                         alt: "NFT",
                                         className: "w-full h-full object-cover"
                                     }, void 0, false, {
                                         fileName: "[project]/src/Scene.jsx",
-                                        lineNumber: 92,
+                                        lineNumber: 164,
                                         columnNumber: 17
                                     }, ("TURBOPACK compile-time value", void 0))
                                 }, void 0, false, {
                                     fileName: "[project]/src/Scene.jsx",
-                                    lineNumber: 91,
+                                    lineNumber: 163,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0)),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "w-1/2 flex flex-col justify-between",
+                                    className: "w-full md:w-1/2 flex flex-col justify-center",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
-                                                    className: "text-3xl font-bold text-white mb-2",
+                                                    className: "text-4xl font-black text-white mb-2 tracking-tight",
                                                     children: [
                                                         "Abstract #",
                                                         selectedItem.name.slice(0, 6)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Scene.jsx",
-                                                    lineNumber: 98,
+                                                    lineNumber: 169,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex items-center gap-2 mb-6",
+                                                    className: "flex items-center gap-3 mb-8",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "px-2 py-1 bg-orange-500/20 text-orange-500 text-xs font-bold rounded",
-                                                            children: "RARE"
+                                                            className: "px-3 py-1 bg-purple-500/20 text-purple-400 text-xs font-bold tracking-wider rounded-full border border-purple-500/20",
+                                                            children: "ETH-721"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/Scene.jsx",
-                                                            lineNumber: 102,
+                                                            lineNumber: 173,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                            className: "text-white/40 text-xs",
-                                                            children: "Created by @ArtistName"
+                                                            className: "text-white/40 text-sm",
+                                                            children: "Created by @DigitalArtist"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/Scene.jsx",
-                                                            lineNumber: 103,
+                                                            lineNumber: 174,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Scene.jsx",
-                                                    lineNumber: 101,
+                                                    lineNumber: 172,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "space-y-4",
+                                                    className: "space-y-6 mb-8",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex justify-between border-b border-white/10 pb-2",
+                                                            className: "flex justify-between items-center border-b border-white/5 pb-4",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-white/60",
+                                                                    className: "text-white/60 font-medium",
                                                                     children: "Current Price"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Scene.jsx",
-                                                                    lineNumber: 108,
+                                                                    lineNumber: 179,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-white font-mono font-bold",
+                                                                    className: "text-white font-mono text-2xl font-bold",
                                                                     children: [
-                                                                        (Math.random() * 5).toFixed(2),
+                                                                        (Math.random() * 5 + 0.5).toFixed(2),
                                                                         " ETH"
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/Scene.jsx",
-                                                                    lineNumber: 109,
+                                                                    lineNumber: 180,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/Scene.jsx",
-                                                            lineNumber: 107,
+                                                            lineNumber: 178,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex justify-between border-b border-white/10 pb-2",
+                                                            className: "flex justify-between items-center border-b border-white/5 pb-4",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-white/60",
-                                                                    children: "Color Palette"
-                                                                }, void 0, false, {
-                                                                    fileName: "[project]/src/Scene.jsx",
-                                                                    lineNumber: 112,
-                                                                    columnNumber: 23
-                                                                }, ("TURBOPACK compile-time value", void 0)),
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                    className: "flex gap-1",
+                                                                    className: "text-white/60 font-medium",
                                                                     children: [
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "w-4 h-4 rounded-full bg-red-500"
+                                                                        "Color Palette ",
+                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                            className: "text-[10px] text-white/30 ml-1",
+                                                                            children: "(Click to copy)"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/src/Scene.jsx",
-                                                                            lineNumber: 114,
-                                                                            columnNumber: 25
-                                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "w-4 h-4 rounded-full bg-blue-500"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/src/Scene.jsx",
-                                                                            lineNumber: 115,
-                                                                            columnNumber: 25
-                                                                        }, ("TURBOPACK compile-time value", void 0)),
-                                                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                                            className: "w-4 h-4 rounded-full bg-yellow-500"
-                                                                        }, void 0, false, {
-                                                                            fileName: "[project]/src/Scene.jsx",
-                                                                            lineNumber: 116,
-                                                                            columnNumber: 25
+                                                                            lineNumber: 184,
+                                                                            columnNumber: 81
                                                                         }, ("TURBOPACK compile-time value", void 0))
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/src/Scene.jsx",
-                                                                    lineNumber: 113,
+                                                                    lineNumber: 184,
+                                                                    columnNumber: 23
+                                                                }, ("TURBOPACK compile-time value", void 0)),
+                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    className: "flex gap-2",
+                                                                    children: [
+                                                                        '#FF5733',
+                                                                        '#33FF57',
+                                                                        '#3357FF'
+                                                                    ].map((color)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                                                            onClick: ()=>handleColorClick(color),
+                                                                            className: "w-6 h-6 rounded-full border border-white/20 hover:scale-110 transition-transform focus:ring-2 ring-white",
+                                                                            style: {
+                                                                                backgroundColor: color
+                                                                            },
+                                                                            title: `Copy ${color}`
+                                                                        }, color, false, {
+                                                                            fileName: "[project]/src/Scene.jsx",
+                                                                            lineNumber: 187,
+                                                                            columnNumber: 27
+                                                                        }, ("TURBOPACK compile-time value", void 0)))
+                                                                }, void 0, false, {
+                                                                    fileName: "[project]/src/Scene.jsx",
+                                                                    lineNumber: 185,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/Scene.jsx",
-                                                            lineNumber: 111,
+                                                            lineNumber: 183,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex justify-between border-b border-white/10 pb-2",
+                                                            className: "flex justify-between items-center border-b border-white/5 pb-4",
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-white/60",
+                                                                    className: "text-white/60 font-medium",
                                                                     children: "Token ID"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Scene.jsx",
-                                                                    lineNumber: 120,
+                                                                    lineNumber: 199,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-white/40 font-mono text-xs",
+                                                                    className: "text-white/40 font-mono text-xs tracking-wide bg-black/30 px-2 py-1 rounded",
                                                                     children: selectedItem.name
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/src/Scene.jsx",
-                                                                    lineNumber: 121,
+                                                                    lineNumber: 200,
                                                                     columnNumber: 23
                                                                 }, ("TURBOPACK compile-time value", void 0))
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/src/Scene.jsx",
-                                                            lineNumber: 119,
+                                                            lineNumber: 198,
                                                             columnNumber: 21
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/Scene.jsx",
-                                                    lineNumber: 106,
+                                                    lineNumber: 177,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/Scene.jsx",
-                                            lineNumber: 97,
+                                            lineNumber: 168,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "flex gap-3 mt-8",
+                                            className: "flex gap-4",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    className: "flex-1 bg-white text-black font-bold py-3 rounded-lg hover:bg-gray-200 transition-colors",
+                                                    className: "flex-1 bg-white text-black font-bold py-4 rounded-xl hover:bg-gray-200 transition-colors shadow-lg shadow-white/5",
                                                     children: "Place Bid"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Scene.jsx",
-                                                    lineNumber: 127,
+                                                    lineNumber: 206,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                                                    onClick: ()=>setSelectedItem(null),
-                                                    className: "px-6 border border-white/20 text-white rounded-lg hover:bg-white/10 transition-colors",
-                                                    children: "Close"
+                                                    onClick: ()=>toggleFavorite(selectedItem.name),
+                                                    className: `px-8 rounded-xl border-2 font-bold transition-colors flex items-center justify-center gap-2
+                      ${favorites.has(selectedItem.name) ? 'border-red-500 bg-red-500/10 text-red-500' : 'border-white/20 text-white hover:bg-white/5'}`,
+                                                    children: favorites.has(selectedItem.name) ? 'Liked ♥' : 'Like ♡'
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/Scene.jsx",
-                                                    lineNumber: 130,
+                                                    lineNumber: 209,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/Scene.jsx",
-                                            lineNumber: 126,
+                                            lineNumber: 205,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/Scene.jsx",
-                                    lineNumber: 96,
+                                    lineNumber: 167,
                                     columnNumber: 15
                                 }, ("TURBOPACK compile-time value", void 0))
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/Scene.jsx",
-                            lineNumber: 82,
+                            lineNumber: 155,
                             columnNumber: 13
                         }, ("TURBOPACK compile-time value", void 0))
                     }, void 0, false, {
                         fileName: "[project]/src/Scene.jsx",
-                        lineNumber: 81,
+                        lineNumber: 154,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/Scene.jsx",
-                lineNumber: 58,
+                lineNumber: 76,
                 columnNumber: 7
             }, ("TURBOPACK compile-time value", void 0))
         ]
     }, void 0, true);
 };
-_s(Scene, "W90vXL8zrY0PYSZOdu1vcFkiA78=");
+_s(Scene, "Ed7fNNTmbglK8L9T76gFnFGu63E=");
 _c = Scene;
-function Frames({ images, activeId, basePath, onOpenDetails, q = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Quaternion"](), p = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Vector3"]() }) {
+function Frames({ images, activeId, basePath, onOpenDetails, favorites, onToggleFavorite, q = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Quaternion"](), p = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Vector3"]() }) {
     _s1();
     const ref = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])();
     const clicked = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])();
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "Frames.useEffect": ()=>{
-            // Find object by name from activeId
             clicked.current = ref.current.getObjectByName(activeId);
             if (clicked.current) {
                 clicked.current.parent.updateWorldMatrix(true, true);
@@ -472,23 +624,31 @@ function Frames({ images, activeId, basePath, onOpenDetails, q = new __TURBOPACK
         ref: ref,
         onClick: (e)=>{
             e.stopPropagation();
-            // If clicking the same item, go back to base. If clicking new item, route to it.
             const target = clicked.current === e.object ? basePath : '/item/' + e.object.name;
-            router.push(target);
+            if (clicked.current === e.object) {
+                router.push(basePath);
+            } else {
+                router.push('/item/' + e.object.name);
+            }
         },
         onPointerMissed: ()=>router.push(basePath),
-        children: images.map((props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Frame, {
+        children: images.map((props)=>{
+            const id = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$uuid$2d$by$2d$string$2f$src$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(props.url);
+            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Frame, {
                 ...props,
                 activeId: activeId,
-                onOpenDetails: onOpenDetails
+                onOpenDetails: onOpenDetails,
+                isLiked: favorites.has(id),
+                toggleLike: ()=>onToggleFavorite(id)
             }, props.url, false, {
                 fileName: "[project]/src/Scene.jsx",
-                lineNumber: 181,
-                columnNumber: 9
-            }, this))
+                lineNumber: 266,
+                columnNumber: 11
+            }, this);
+        })
     }, void 0, false, {
         fileName: "[project]/src/Scene.jsx",
-        lineNumber: 171,
+        lineNumber: 251,
         columnNumber: 5
     }, this);
 }
@@ -499,12 +659,11 @@ _s1(Frames, "g/YbQynBcoofU47wySngyIqmVt8=", false, function() {
     ];
 });
 _c1 = Frames;
-function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Color"](), activeId, onOpenDetails, ...props }) {
+function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$three$2f$build$2f$three$2e$core$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Color"](), activeId, onOpenDetails, isLiked, toggleLike, ...props }) {
     _s2();
     const image = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])();
     const frame = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])();
     const [hovered, hover] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [liked, setLiked] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [rnd] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
         "Frame.useState": ()=>Math.random()
     }["Frame.useState"]);
@@ -524,16 +683,15 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
     }["Frame.useFrame"]);
     const handleDetailsClick = (e)=>{
         e.stopPropagation();
-        // Instead of routing, we open the modal via the prop function
         onOpenDetails({
             url,
             name,
             rnd
         });
     };
-    const toggleLike = (e)=>{
+    const handleLikeClick = (e)=>{
         e.stopPropagation();
-        setLiked(!liked);
+        toggleLike();
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("group", {
         ...props,
@@ -555,7 +713,7 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("boxGeometry", {}, void 0, false, {
                         fileName: "[project]/src/Scene.jsx",
-                        lineNumber: 227,
+                        lineNumber: 313,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meshStandardMaterial", {
@@ -565,7 +723,7 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                         envMapIntensity: 2
                     }, void 0, false, {
                         fileName: "[project]/src/Scene.jsx",
-                        lineNumber: 228,
+                        lineNumber: 314,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("mesh", {
@@ -584,7 +742,7 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("boxGeometry", {}, void 0, false, {
                                 fileName: "[project]/src/Scene.jsx",
-                                lineNumber: 230,
+                                lineNumber: 316,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("meshBasicMaterial", {
@@ -592,13 +750,13 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                                 fog: false
                             }, void 0, false, {
                                 fileName: "[project]/src/Scene.jsx",
-                                lineNumber: 231,
+                                lineNumber: 317,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/Scene.jsx",
-                        lineNumber: 229,
+                        lineNumber: 315,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Image"], {
@@ -612,16 +770,16 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                         url: url
                     }, void 0, false, {
                         fileName: "[project]/src/Scene.jsx",
-                        lineNumber: 233,
+                        lineNumber: 319,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/Scene.jsx",
-                lineNumber: 221,
+                lineNumber: 307,
                 columnNumber: 7
             }, this),
-            liked && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
+            isLiked && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$core$2f$Text$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Text"], {
                 anchorX: "right",
                 anchorY: "top",
                 position: [
@@ -630,15 +788,14 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                     0.1
                 ],
                 fontSize: 0.1,
-                color: "red",
+                color: "#ef4444",
                 children: "♥"
             }, void 0, false, {
                 fileName: "[project]/src/Scene.jsx",
-                lineNumber: 248,
+                lineNumber: 333,
                 columnNumber: 9
             }, this),
             isActive && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$web$2f$Html$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Html"], {
-                // Adjusted position to be at the bottom of the frame (y ~ 0.1)
                 position: [
                     0,
                     0.15,
@@ -652,7 +809,7 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                     pointerEvents: 'auto'
                 },
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex gap-3 p-2 bg-black/50 backdrop-blur-md rounded-full border border-white/10 shadow-lg",
+                    className: "flex gap-3 p-2 bg-black/60 backdrop-blur-md rounded-full border border-white/10 shadow-[0_0_20px_rgba(0,0,0,0.5)]",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: handleDetailsClick,
@@ -661,22 +818,22 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                                 children: "See Details"
                             }, void 0, false, {
                                 fileName: "[project]/src/Scene.jsx",
-                                lineNumber: 277,
+                                lineNumber: 358,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/Scene.jsx",
-                            lineNumber: 273,
+                            lineNumber: 354,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            onClick: toggleLike,
-                            className: `w-8 h-8 rounded-full flex items-center justify-center border transition-all duration-300
-                ${liked ? 'bg-red-500 border-red-500 text-white' : 'bg-transparent border-white/30 text-white hover:bg-white/10'}`,
+                            onClick: handleLikeClick,
+                            className: `w-8 h-8 rounded-full flex items-center justify-center border-2 transition-all duration-300
+                ${isLiked ? 'bg-red-500 border-red-500 text-white' : 'bg-transparent border-white/30 text-white hover:bg-white/10 hover:border-white'}`,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
                                 xmlns: "http://www.w3.org/2000/svg",
                                 viewBox: "0 0 24 24",
-                                fill: liked ? "currentColor" : "none",
+                                fill: isLiked ? "currentColor" : "none",
                                 stroke: "currentColor",
                                 strokeWidth: "2",
                                 strokeLinecap: "round",
@@ -686,38 +843,38 @@ function Frame({ url, c = new __TURBOPACK__imported__module__$5b$project$5d2f$no
                                     d: "M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"
                                 }, void 0, false, {
                                     fileName: "[project]/src/Scene.jsx",
-                                    lineNumber: 290,
+                                    lineNumber: 370,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/Scene.jsx",
-                                lineNumber: 289,
+                                lineNumber: 369,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/Scene.jsx",
-                            lineNumber: 281,
+                            lineNumber: 361,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/Scene.jsx",
-                    lineNumber: 270,
+                    lineNumber: 353,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/Scene.jsx",
-                lineNumber: 261,
+                lineNumber: 345,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/Scene.jsx",
-        lineNumber: 220,
+        lineNumber: 306,
         columnNumber: 5
     }, this);
 }
-_s2(Frame, "qo67XYerPczV2YqLJShJJmHSr3Q=", false, function() {
+_s2(Frame, "xwq8Dk3+BEMdY+G9yjs5DLaK90U=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$drei$2f$web$2f$useCursor$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCursor"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$react$2d$three$2f$fiber$2f$dist$2f$events$2d$f8cd670d$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__D__as__useFrame$3e$__["useFrame"]
